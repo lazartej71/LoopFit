@@ -77,6 +77,14 @@
         <!-- El JS llena la lista de grupos musculares con sus PR. -->
         <div id="lista-pr"></div>
       </section>
+
+      <!-- ===================== VISTA: HISTORIAL ===================== -->
+      <section id="vista-historial" class="vista">
+        <h2 class="titulo-seccion">Historial</h2>
+        <p class="subtexto">Todos tus días entrenados. Tocá uno para ver el detalle.</p>
+        <!-- El JS llena la lista de días entrenados. -->
+        <div id="lista-historial"></div>
+      </section>
     </main>
 
     <!-- BOTÓN FLOTANTE para agregar (cambia según la vista). -->
@@ -91,6 +99,10 @@
       <button data-vista="registro">
         <span class="icono">📅</span>
         Registro
+      </button>
+      <button data-vista="historial">
+        <span class="icono">📖</span>
+        Historial
       </button>
       <button data-vista="pr">
         <span class="icono">🏆</span>
@@ -119,6 +131,7 @@
     <script src="js/rutinas.js"></script>
     <script src="js/registro.js"></script>
     <script src="js/pr.js"></script>
+    <script src="js/historial.js"></script>
     <script src="js/app.js"></script>
   </body>
 </html>

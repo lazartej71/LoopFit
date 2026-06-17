@@ -56,13 +56,15 @@ function cambiarVista(nombre) {
   });
 
   // El botón flotante (+) solo aparece en Rutinas y PR.
-  // En Registro no hace falta (se usa el botón "Cargar entrenamiento").
-  UI.$("#btn-flotante").style.display = nombre === "registro" ? "none" : "flex";
+  // En Registro e Historial no hace falta.
+  UI.$("#btn-flotante").style.display =
+    nombre === "rutinas" || nombre === "pr" ? "flex" : "none";
 
   // Refrescamos el contenido de la vista por si cambió algo.
   if (nombre === "rutinas") Rutinas.render();
   if (nombre === "registro") Registro.refrescarSelect();
   if (nombre === "pr") PR.render();
+  if (nombre === "historial") Historial.render();
 }
 
 function iniciarNavegacion() {
@@ -148,6 +150,7 @@ async function iniciarApp() {
   // Conectamos los eventos de cada sección (una sola vez).
   Rutinas.conectarEventos();
   PR.conectarEventos();
+  Historial.conectarEventos();
   Registro.init();
 
   // Dibujamos la primera vista.

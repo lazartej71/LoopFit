@@ -19,7 +19,7 @@
   este número (v1 -> v2). Al cambiar, se borra la caché vieja automáticamente.
 */
 
-const VERSION = "v1";
+const VERSION = "v2";
 const CACHE = "gymtrack-" + VERSION;
 
 // Archivos que guardamos al instalar, para que la app abra incluso sin internet.
@@ -32,6 +32,7 @@ const ARCHIVOS = [
   "./js/rutinas.js",
   "./js/registro.js",
   "./js/pr.js",
+  "./js/historial.js",
   "./js/app.js",
   "./assets/sql-wasm.js",
   "./assets/sql-wasm.wasm",

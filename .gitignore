@@ -13,3 +13,9 @@ node_modules/
 
 # Carpeta temporal de Vercel
 .vercel
+
+#Claude
+.claude/
+
+# Servidor local de prueba (no se sube al repo)
+_dev-server.cjs

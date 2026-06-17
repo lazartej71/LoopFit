@@ -1,4 +1,4 @@
-# 🏋️ GymTrack
+# 🏋️ LoopFit
 
 App web para llevar el seguimiento de tus entrenamientos de gimnasio.
 Funciona en el celular como **PWA** (se instala como una app), guarda los datos
@@ -104,7 +104,7 @@ ahí, cada vez que hagas `git push`, Vercel **vuelve a publicar solo**.
 
 ### 1) Subir el proyecto a GitHub
 Ver la sección **"Git y GitHub"** más abajo. Cuando termines, vas a tener el
-repo en `https://github.com/TU-USUARIO/gymtrack` (o el nombre que le pongas).
+repo en `https://github.com/TU-USUARIO/loopfit` (o el nombre que le pongas).
 
 ### 2) Importar el repo en Vercel
 1. Entrá a [vercel.com](https://vercel.com) y registrate/iniciá sesión
@@ -121,7 +121,7 @@ repo en `https://github.com/TU-USUARIO/gymtrack` (o el nombre que le pongas).
 ### 3) Tu URL pública
 Cuando termine, Vercel te da una dirección tipo:
 ```
-https://gymtrack-tu-usuario.vercel.app
+https://loopfit-tu-usuario.vercel.app
 ```
 Esa es la URL que abrís en el celular para instalar la PWA. ✅
 
@@ -168,12 +168,12 @@ Para subirlo a GitHub por primera vez:
 
 1. Creá un repositorio **vacío** en GitHub (sin README, sin .gitignore):
    entrá a [github.com/new](https://github.com/new), poné el nombre (ej:
-   `gymtrack`) y tocá **"Create repository"**.
+   `loopfit`) y tocá **"Create repository"**.
 
 2. GitHub te va a mostrar la URL del repo. Conectalo y subí el código corriendo
    estos comandos en la carpeta del proyecto (reemplazá la URL por la tuya):
    ```bash
-   git remote add origin https://github.com/TU-USUARIO/gymtrack.git
+   git remote add origin https://github.com/TU-USUARIO/loopfit.git
    git branch -M main
    git push -u origin main
    ```

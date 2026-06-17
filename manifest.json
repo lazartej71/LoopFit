@@ -1,6 +1,6 @@
 {
-  "name": "GymTrack - Seguimiento de entrenamiento",
-  "short_name": "GymTrack",
+  "name": "LoopFit - Seguimiento de entrenamiento",
+  "short_name": "LoopFit",
   "description": "Registrá tus rutinas, entrenamientos diarios y records personales (PR).",
   "start_url": "./index.html",
   "scope": "./",

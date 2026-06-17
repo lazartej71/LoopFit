@@ -103,7 +103,15 @@ const Registro = (() => {
       return;
     }
 
-    cont.innerHTML = ejercicios.map((ej) => tarjetaEjercicio(ej)).join("");
+    // Dibujamos cada ejercicio y, al final, el botón para finalizar el día.
+    cont.innerHTML =
+      ejercicios.map((ej) => tarjetaEjercicio(ej)).join("") +
+      `<button class="boton boton-primario boton-ancho mt" data-accion="finalizar-sesion">
+         ✅ Finalizar entrenamiento
+       </button>
+       <p class="subtexto text-center mt">
+         Tranqui: cada serie se guarda sola a medida que la agregás.
+       </p>`;
   }
 
   // Arma la tarjeta de UN ejercicio: sus series ya cargadas + el formulario
@@ -168,7 +176,21 @@ const Registro = (() => {
       eliminarSerie(id);
     } else if (accion === "ver-historial") {
       verHistorial(id);
+    } else if (accion === "finalizar-sesion") {
+      finalizarSesion();
     }
+  }
+
+  // Finaliza el día: fuerza el guardado, avisa y lleva al Historial.
+  // (Los datos ya estaban guardados; esto es para tener un cierre claro.)
+  async function finalizarSesion() {
+    await DB.guardarYa();
+    UI.toast("¡Entrenamiento guardado! 💪");
+    // Limpiamos para que al volver a Registro la pantalla quede lista para otro día.
+    sesionActual = null;
+    rutinaActual = null;
+    UI.$("#contenedor-sesion").innerHTML = "";
+    cambiarVista("historial"); // función global definida en app.js
   }
 
   // Agrega una serie al ejercicio indicado, leyendo los inputs de su tarjeta.

@@ -19,7 +19,7 @@
   este número (v1 -> v2). Al cambiar, se borra la caché vieja automáticamente.
 */
 
-const VERSION = "v2";
+const VERSION = "v3";
 const CACHE = "gymtrack-" + VERSION;
 
 // Archivos que guardamos al instalar, para que la app abra incluso sin internet.

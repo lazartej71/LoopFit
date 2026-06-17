@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="es" data-tema="claro">
+  <head>
+    <meta charset="UTF-8" />
+    <!-- viewport: clave para que se vea bien en el celular.
+         viewport-fit=cover ayuda con los bordes redondeados/notch. -->
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+    />
+    <meta name="theme-color" content="#2563eb" />
+    <meta name="description" content="App para registrar tus entrenamientos de gimnasio." />
+
+    <title>GymTrack</title>
+
+    <!-- Estilos -->
+    <link rel="stylesheet" href="css/styles.css" />
+
+    <!-- PWA: el manifiesto describe la app para poder instalarla. -->
+    <link rel="manifest" href="manifest.json" />
+
+    <!-- Íconos para cuando la agregás a la pantalla de inicio. -->
+    <link rel="icon" href="icons/icon-192.png" />
+    <link rel="apple-touch-icon" href="icons/icon-192.png" />
+  </head>
+
+  <body>
+    <!-- Banner que aparece cuando hay una versión nueva de la app. -->
+    <div id="banner-actualizar" class="banner-actualizar oculto">
+      <span>Hay una versión nueva 🎉</span>
+      <button id="btn-actualizar">Actualizar</button>
+    </div>
+
+    <!-- ENCABEZADO -->
+    <header class="encabezado">
+      <h1>🏋️ GymTrack</h1>
+      <button id="btn-tema" class="boton-tema" aria-label="Cambiar tema">🌙</button>
+    </header>
+
+    <!-- CONTENIDO -->
+    <main>
+      <!-- ===================== VISTA: RUTINAS ===================== -->
+      <section id="vista-rutinas" class="vista activa">
+        <h2 class="titulo-seccion">Mis rutinas</h2>
+        <!-- El JS llena esta lista de rutinas. -->
+        <div id="lista-rutinas"></div>
+      </section>
+
+      <!-- ===================== VISTA: REGISTRO ===================== -->
+      <section id="vista-registro" class="vista">
+        <h2 class="titulo-seccion">Registro del día</h2>
+
+        <div class="tarjeta">
+          <label for="fecha-sesion">Fecha</label>
+          <input type="date" id="fecha-sesion" />
+
+          <label for="select-rutina">Rutina del día</label>
+          <select id="select-rutina">
+            <option value="">— Elegí una rutina —</option>
+          </select>
+
+          <button id="btn-iniciar-sesion" class="boton boton-primario boton-ancho">
+            Cargar entrenamiento
+          </button>
+        </div>
+
+        <!-- Acá el JS muestra los ejercicios de la sesión con sus series. -->
+        <div id="contenedor-sesion"></div>
+      </section>
+
+      <!-- ===================== VISTA: PR ===================== -->
+      <section id="vista-pr" class="vista">
+        <h2 class="titulo-seccion">Records personales (PR)</h2>
+        <p class="subtexto">
+          Definí un ejercicio principal por grupo muscular y registrá tu mejor marca.
+        </p>
+        <!-- El JS llena la lista de grupos musculares con sus PR. -->
+        <div id="lista-pr"></div>
+      </section>
+    </main>
+
+    <!-- BOTÓN FLOTANTE para agregar (cambia según la vista). -->
+    <button id="btn-flotante" class="boton-flotante" aria-label="Agregar">+</button>
+
+    <!-- NAVEGACIÓN INFERIOR -->
+    <nav class="nav">
+      <button data-vista="rutinas" class="activa">
+        <span class="icono">📋</span>
+        Rutinas
+      </button>
+      <button data-vista="registro">
+        <span class="icono">📅</span>
+        Registro
+      </button>
+      <button data-vista="pr">
+        <span class="icono">🏆</span>
+        PR
+      </button>
+    </nav>
+
+    <!-- MODAL genérico para formularios (el JS le mete el contenido). -->
+    <div id="modal-fondo" class="modal-fondo oculto">
+      <div class="modal" id="modal-caja"></div>
+    </div>
+
+    <!-- Aviso flotante (toast). -->
+    <div id="toast" class="toast"></div>
+
+    <!-- ============== SCRIPTS ==============
+         Orden importante:
+         1) sql.js (la librería de SQLite en WebAssembly).
+         2) db.js (nuestra base de datos).
+         3) ui.js (ayudantes de interfaz).
+         4) Los módulos de cada sección.
+         5) app.js (arranca todo). -->
+    <script src="assets/sql-wasm.js"></script>
+    <script src="js/db.js"></script>
+    <script src="js/ui.js"></script>
+    <script src="js/rutinas.js"></script>
+    <script src="js/registro.js"></script>
+    <script src="js/pr.js"></script>
+    <script src="js/app.js"></script>
+  </body>
+</html>

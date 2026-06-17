@@ -1,0 +1,458 @@
+/*
+  styles.css
+  ==========
+  Estilos de la app. Pensados para el celular y para usar con una mano:
+  botones grandes, textos legibles y modo claro/oscuro.
+
+  Usamos "variables CSS" (las que empiezan con --) para los colores. Así, para
+  el modo oscuro solo cambiamos las variables y todo el resto se adapta solo.
+*/
+
+/* ---------- Colores: MODO CLARO (por defecto) ---------- */
+:root {
+  --fondo: #f3f4f6;
+  --superficie: #ffffff;
+  --superficie-2: #f9fafb;
+  --borde: #e5e7eb;
+  --texto: #111827;
+  --texto-suave: #6b7280;
+  --primario: #2563eb;
+  --primario-texto: #ffffff;
+  --peligro: #dc2626;
+  --ok: #16a34a;
+  --sombra: 0 1px 3px rgba(0, 0, 0, 0.1);
+  --radio: 14px;
+  --alto-nav: 64px;
+}
+
+/* ---------- Colores: MODO OSCURO ----------
+   Se aplican cuando el <html> tiene el atributo data-tema="oscuro". */
+:root[data-tema="oscuro"] {
+  --fondo: #0b1220;
+  --superficie: #131c2e;
+  --superficie-2: #1b2740;
+  --borde: #2a3856;
+  --texto: #f3f4f6;
+  --texto-suave: #9ca3af;
+  --primario: #3b82f6;
+  --primario-texto: #ffffff;
+  --peligro: #ef4444;
+  --ok: #22c55e;
+  --sombra: 0 1px 3px rgba(0, 0, 0, 0.4);
+}
+
+/* Reseteo básico para que todo mida igual y sin sorpresas. */
+* {
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent; /* Saca el destello azul al tocar en el cel. */
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  background: var(--fondo);
+  color: var(--texto);
+  /* Dejamos espacio abajo para que la barra de navegación no tape el contenido. */
+  padding-bottom: calc(var(--alto-nav) + env(safe-area-inset-bottom, 0px) + 12px);
+  line-height: 1.5;
+}
+
+/* ---------- Encabezado ---------- */
+.encabezado {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 14px 16px;
+  padding-top: calc(14px + env(safe-area-inset-top, 0px));
+  background: var(--superficie);
+  border-bottom: 1px solid var(--borde);
+}
+
+.encabezado h1 {
+  font-size: 1.15rem;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.boton-tema {
+  background: var(--superficie-2);
+  border: 1px solid var(--borde);
+  color: var(--texto);
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+
+/* ---------- Contenido principal ---------- */
+main {
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 16px;
+}
+
+/* Cada "vista" (Rutinas, Registro, PR). Solo se muestra una a la vez. */
+.vista {
+  display: none;
+}
+.vista.activa {
+  display: block;
+}
+
+h2.titulo-seccion {
+  font-size: 1.3rem;
+  margin: 4px 0 16px;
+}
+
+/* ---------- Tarjetas ---------- */
+.tarjeta {
+  background: var(--superficie);
+  border: 1px solid var(--borde);
+  border-radius: var(--radio);
+  padding: 16px;
+  margin-bottom: 12px;
+  box-shadow: var(--sombra);
+}
+
+.tarjeta-titulo {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+.tarjeta-titulo h3 {
+  margin: 0;
+  font-size: 1.1rem;
+}
+
+.subtexto {
+  color: var(--texto-suave);
+  font-size: 0.9rem;
+}
+
+/* ---------- Botones ---------- */
+.boton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  min-height: 50px;
+  padding: 12px 18px;
+  border-radius: var(--radio);
+  border: 1px solid var(--borde);
+  background: var(--superficie-2);
+  color: var(--texto);
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  user-select: none;
+}
+.boton:active {
+  transform: scale(0.98);
+}
+
+.boton-primario {
+  background: var(--primario);
+  color: var(--primario-texto);
+  border-color: transparent;
+}
+
+.boton-peligro {
+  background: transparent;
+  color: var(--peligro);
+  border-color: var(--peligro);
+}
+
+.boton-ancho {
+  width: 100%;
+}
+
+/* Botón flotante para "agregar" (esquina inferior derecha). */
+.boton-flotante {
+  position: fixed;
+  right: 16px;
+  bottom: calc(var(--alto-nav) + env(safe-area-inset-bottom, 0px) + 16px);
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: var(--primario);
+  color: var(--primario-texto);
+  border: none;
+  font-size: 1.8rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+  cursor: pointer;
+  z-index: 20;
+}
+
+/* Botoncitos chicos (íconos de editar/borrar). */
+.boton-icono {
+  background: transparent;
+  border: none;
+  color: var(--texto-suave);
+  font-size: 1.2rem;
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+.boton-icono:active {
+  background: var(--superficie-2);
+}
+
+/* ---------- Formularios ---------- */
+label {
+  display: block;
+  font-size: 0.9rem;
+  font-weight: 600;
+  margin-bottom: 6px;
+  color: var(--texto-suave);
+}
+
+input,
+select {
+  width: 100%;
+  min-height: 50px;
+  padding: 12px 14px;
+  font-size: 1.05rem; /* 16px+ evita que el cel haga zoom al enfocar. */
+  border: 1px solid var(--borde);
+  border-radius: var(--radio);
+  background: var(--superficie-2);
+  color: var(--texto);
+  margin-bottom: 14px;
+}
+input:focus,
+select:focus {
+  outline: 2px solid var(--primario);
+  outline-offset: 1px;
+}
+
+/* Fila de inputs (ej: peso + reps uno al lado del otro). */
+.fila {
+  display: flex;
+  gap: 10px;
+  align-items: flex-end;
+}
+.fila > * {
+  flex: 1;
+}
+.fila-auto {
+  flex: 0 0 auto;
+}
+
+/* ---------- Navegación inferior ---------- */
+.nav {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 30;
+  display: flex;
+  background: var(--superficie);
+  border-top: 1px solid var(--borde);
+  height: var(--alto-nav);
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+.nav button {
+  flex: 1;
+  background: transparent;
+  border: none;
+  color: var(--texto-suave);
+  font-size: 0.72rem;
+  font-weight: 600;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 3px;
+  cursor: pointer;
+}
+.nav button .icono {
+  font-size: 1.4rem;
+}
+.nav button.activa {
+  color: var(--primario);
+}
+
+/* ---------- Ventana modal (para formularios) ---------- */
+.modal-fondo {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  z-index: 50;
+}
+.modal-fondo.oculto {
+  display: none;
+}
+.modal {
+  background: var(--superficie);
+  width: 100%;
+  max-width: 640px;
+  border-radius: 20px 20px 0 0;
+  padding: 20px;
+  padding-bottom: calc(20px + env(safe-area-inset-bottom, 0px));
+  max-height: 90vh;
+  overflow-y: auto;
+}
+.modal h3 {
+  margin-top: 0;
+}
+.modal-acciones {
+  display: flex;
+  gap: 10px;
+  margin-top: 8px;
+}
+.modal-acciones .boton {
+  flex: 1;
+}
+
+/* ---------- Avisos pequeños (toasts) ---------- */
+.toast {
+  position: fixed;
+  left: 50%;
+  bottom: calc(var(--alto-nav) + 24px);
+  transform: translateX(-50%);
+  background: var(--texto);
+  color: var(--fondo);
+  padding: 12px 18px;
+  border-radius: 999px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  z-index: 100;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  opacity: 0;
+  transition: opacity 0.2s;
+  pointer-events: none;
+}
+.toast.visible {
+  opacity: 1;
+}
+
+/* ---------- Banner de "hay una versión nueva" ---------- */
+.banner-actualizar {
+  position: fixed;
+  left: 12px;
+  right: 12px;
+  top: calc(12px + env(safe-area-inset-top, 0px));
+  z-index: 200;
+  background: var(--primario);
+  color: var(--primario-texto);
+  padding: 12px 16px;
+  border-radius: var(--radio);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
+}
+.banner-actualizar.oculto {
+  display: none;
+}
+.banner-actualizar button {
+  background: #fff;
+  color: var(--primario);
+  border: none;
+  border-radius: 999px;
+  padding: 8px 14px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+/* ---------- Estado vacío (cuando no hay datos todavía) ---------- */
+.vacio {
+  text-align: center;
+  color: var(--texto-suave);
+  padding: 40px 16px;
+}
+.vacio .emoji {
+  font-size: 2.5rem;
+  display: block;
+  margin-bottom: 8px;
+}
+
+/* ---------- Lista de ejercicios dentro de una rutina ---------- */
+.lista-ejercicios {
+  list-style: none;
+  margin: 12px 0 0;
+  padding: 0;
+}
+.lista-ejercicios li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 0;
+  border-top: 1px solid var(--borde);
+}
+.etiqueta-grupo {
+  display: inline-block;
+  font-size: 0.75rem;
+  background: var(--superficie-2);
+  border: 1px solid var(--borde);
+  color: var(--texto-suave);
+  padding: 2px 8px;
+  border-radius: 999px;
+  margin-left: 6px;
+}
+
+/* Series registradas (en el registro diario). */
+.serie-fila {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px;
+  background: var(--superficie-2);
+  border-radius: 10px;
+  margin-bottom: 8px;
+}
+.serie-num {
+  width: 34px;
+  height: 34px;
+  flex: 0 0 auto;
+  border-radius: 50%;
+  background: var(--primario);
+  color: var(--primario-texto);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 0.9rem;
+}
+.serie-dato {
+  font-weight: 600;
+}
+
+/* Cuadro chico para "tu PR actual". */
+.pr-actual {
+  background: var(--superficie-2);
+  border-radius: var(--radio);
+  padding: 12px;
+  margin: 10px 0;
+  text-align: center;
+}
+.pr-actual .grande {
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: var(--primario);
+}
+
+/* Pequeña utilidad para separar bloques. */
+.mt {
+  margin-top: 16px;
+}
+.text-center {
+  text-align: center;
+}

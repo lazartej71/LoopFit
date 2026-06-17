@@ -1,0 +1,15 @@
+# Archivos del sistema operativo
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+.DS_Store
+
+# Carpetas de editores
+.vscode/
+.idea/
+
+# Node (por si en algún momento instalás algo para probar local)
+node_modules/
+
+# Carpeta temporal de Vercel
+.vercel

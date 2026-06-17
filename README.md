@@ -161,26 +161,4 @@ hace falta, porque esos se piden siempre a la red.
 
 ---
 
-## 🛠️ Git y GitHub
 
-El proyecto ya viene con git inicializado y un primer commit hecho a tu nombre.
-Para subirlo a GitHub por primera vez:
-
-1. Creá un repositorio **vacío** en GitHub (sin README, sin .gitignore):
-   entrá a [github.com/new](https://github.com/new), poné el nombre (ej:
-   `loopfit`) y tocá **"Create repository"**.
-
-2. GitHub te va a mostrar la URL del repo. Conectalo y subí el código corriendo
-   estos comandos en la carpeta del proyecto (reemplazá la URL por la tuya):
-   ```bash
-   git remote add origin https://github.com/TU-USUARIO/loopfit.git
-   git branch -M main
-   git push -u origin main
-   ```
-
-3. De ahí en más, para subir cambios nuevos:
-   ```bash
-   git add .
-   git commit -m "Describí tu cambio acá"
-   git push
-   ```
